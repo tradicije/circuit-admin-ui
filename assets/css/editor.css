@@ -1,0 +1,86 @@
+body.caiu-admin.block-editor-page .interface-interface-skeleton__body,
+body.caiu-admin.block-editor-page .editor-styles-wrapper {
+  background: var(--caiu-bg);
+  color: var(--caiu-text);
+}
+
+body.caiu-admin.block-editor-page .interface-complementary-area,
+body.caiu-admin.block-editor-page .edit-post-layout__metaboxes,
+body.caiu-admin.block-editor-page .components-panel,
+body.caiu-admin.block-editor-page .edit-post-sidebar,
+body.caiu-admin.block-editor-page .edit-post-header,
+body.caiu-admin.block-editor-page .interface-interface-skeleton__sidebar {
+  background: var(--caiu-bg-elevated);
+  color: var(--caiu-text);
+  border-color: var(--caiu-border);
+}
+
+body.caiu-admin.block-editor-page .block-editor-block-list__layout,
+body.caiu-admin.block-editor-page .editor-styles-wrapper.block-editor-writing-flow {
+  max-width: 760px;
+  margin: 32px auto 100px;
+  padding: 28px 36px;
+  background: var(--caiu-bg-elevated);
+  border: 1px solid var(--caiu-border);
+  border-radius: 22px;
+  box-shadow: var(--caiu-shadow);
+}
+
+body.caiu-admin.block-editor-page .editor-post-title,
+body.caiu-admin.block-editor-page .editor-post-title__input {
+  color: var(--caiu-text);
+}
+
+body.caiu-admin.block-editor-page .editor-post-title__input {
+  font-size: clamp(2rem, 2.6vw, 3rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px dashed var(--caiu-border);
+}
+
+body.caiu-admin.block-editor-page .block-editor-rich-text__editable,
+body.caiu-admin.block-editor-page .block-editor-default-block-appender__content {
+  color: var(--caiu-text);
+}
+
+body.caiu-admin.block-editor-page .components-button,
+body.caiu-admin.block-editor-page .components-dropdown-menu__toggle {
+  border-radius: 10px;
+}
+
+body.caiu-admin.block-editor-page .components-button.is-primary {
+  background: var(--caiu-accent);
+  border-color: var(--caiu-accent);
+}
+
+body.caiu-admin.block-editor-page .components-button.is-primary:hover,
+body.caiu-admin.block-editor-page .components-button.is-primary:focus {
+  background: var(--caiu-accent-strong);
+  border-color: var(--caiu-accent-strong);
+}
+
+body.caiu-admin.block-editor-page .components-button.is-secondary,
+body.caiu-admin.block-editor-page .components-button.is-tertiary {
+  color: var(--caiu-text);
+}
+
+body.caiu-admin.block-editor-page .components-input-control__container,
+body.caiu-admin.block-editor-page .components-select-control__input,
+body.caiu-admin.block-editor-page .components-text-control__input,
+body.caiu-admin.block-editor-page .components-textarea-control__input {
+  background: var(--caiu-bg-soft);
+  border-color: var(--caiu-border);
+  color: var(--caiu-text);
+}
+
+@media (max-width: 900px) {
+  body.caiu-admin.block-editor-page .block-editor-block-list__layout,
+  body.caiu-admin.block-editor-page .editor-styles-wrapper.block-editor-writing-flow {
+    max-width: calc(100% - 24px);
+    margin: 14px auto 42px;
+    padding: 18px;
+  }
+}

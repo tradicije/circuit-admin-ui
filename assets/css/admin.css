@@ -1,0 +1,381 @@
+:root {
+  --caiu-radius-sm: 10px;
+  --caiu-radius-md: 14px;
+  --caiu-radius-lg: 20px;
+  --caiu-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+  --caiu-transition: 180ms ease;
+}
+
+body.caiu-admin {
+  --caiu-bg: #f3f6fb;
+  --caiu-bg-elevated: #ffffff;
+  --caiu-bg-soft: #eef2f9;
+  --caiu-text: #1a2533;
+  --caiu-text-muted: #58657a;
+  --caiu-border: #dce3ee;
+  --caiu-accent: #1976d2;
+  --caiu-accent-strong: #0f4fa0;
+  --caiu-success: #108a5f;
+  --caiu-danger: #d63939;
+}
+
+body.caiu-admin.caiu-theme-dark {
+  --caiu-bg: #0c1220;
+  --caiu-bg-elevated: #131c2f;
+  --caiu-bg-soft: #18233a;
+  --caiu-text: #dce6f5;
+  --caiu-text-muted: #93a4bf;
+  --caiu-border: #273653;
+  --caiu-accent: #5aa8ff;
+  --caiu-accent-strong: #89c2ff;
+  --caiu-success: #35be88;
+  --caiu-danger: #ff7575;
+  --caiu-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+body.caiu-admin,
+body.caiu-admin #wpbody,
+body.caiu-admin #wpcontent,
+body.caiu-admin #wpwrap {
+  background: var(--caiu-bg);
+  color: var(--caiu-text);
+}
+
+body.caiu-admin #wpadminbar {
+  background: var(--caiu-bg-elevated);
+  border-bottom: 1px solid var(--caiu-border);
+  box-shadow: 0 8px 24px rgba(2, 10, 24, 0.06);
+}
+
+body.caiu-admin #wpadminbar .ab-item,
+body.caiu-admin #wpadminbar a.ab-item,
+body.caiu-admin #wpadminbar > #wp-toolbar span.ab-label {
+  color: var(--caiu-text);
+}
+
+body.caiu-admin #wpadminbar .ab-top-menu > li:hover > .ab-item,
+body.caiu-admin #wpadminbar .ab-top-menu > li.hover > .ab-item {
+  background: var(--caiu-bg-soft);
+  color: var(--caiu-text);
+}
+
+#wpadminbar .caiu-toggle-icon {
+  position: relative;
+}
+
+#wpadminbar .caiu-toggle-icon::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-top: 7px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff, #c7d8ef 40%, #7ca7db 100%);
+}
+
+body.caiu-admin.caiu-theme-dark #wpadminbar .caiu-toggle-icon::before {
+  background: radial-gradient(circle at 35% 30%, #ffd77a, #efad4a 50%, #b56a1f 100%);
+}
+
+body.caiu-admin #adminmenuback,
+body.caiu-admin #adminmenuwrap,
+body.caiu-admin #adminmenu {
+  background: var(--caiu-bg-elevated);
+}
+
+body.caiu-admin #adminmenu {
+  border-right: 1px solid var(--caiu-border);
+}
+
+body.caiu-admin #adminmenu .wp-submenu,
+body.caiu-admin #adminmenu .wp-has-current-submenu .wp-submenu,
+body.caiu-admin #adminmenu a.wp-has-current-submenu:focus + .wp-submenu,
+body.caiu-admin.folded #adminmenu .wp-has-current-submenu .wp-submenu {
+  background: var(--caiu-bg-soft);
+}
+
+body.caiu-admin #adminmenu li.menu-top > a,
+body.caiu-admin #adminmenu .wp-submenu a {
+  color: var(--caiu-text-muted);
+  transition: background var(--caiu-transition), color var(--caiu-transition);
+}
+
+body.caiu-admin #adminmenu li.menu-top:hover > a,
+body.caiu-admin #adminmenu .wp-submenu a:hover,
+body.caiu-admin #adminmenu .wp-submenu a:focus {
+  color: var(--caiu-text);
+}
+
+body.caiu-admin #adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head,
+body.caiu-admin #adminmenu .wp-menu-arrow,
+body.caiu-admin #adminmenu .wp-menu-arrow div,
+body.caiu-admin #adminmenu li.current a.menu-top,
+body.caiu-admin #adminmenu li.wp-has-current-submenu a.wp-has-current-submenu,
+body.caiu-admin #adminmenu li.wp-has-current-submenu:hover > a,
+body.caiu-admin #adminmenu li:hover a.menu-top,
+body.caiu-admin #adminmenu li.opensub > a.menu-top,
+body.caiu-admin #adminmenu li > a.menu-top:focus {
+  background: var(--caiu-accent);
+  color: #fff;
+}
+
+body.caiu-admin .wrap h1,
+body.caiu-admin .wrap h2,
+body.caiu-admin .wrap h3,
+body.caiu-admin .wrap h4,
+body.caiu-admin .wrap h5,
+body.caiu-admin .wrap h6 {
+  color: var(--caiu-text);
+  letter-spacing: -0.02em;
+}
+
+body.caiu-admin .notice,
+body.caiu-admin div.updated,
+body.caiu-admin div.error,
+body.caiu-admin .card,
+body.caiu-admin .postbox,
+body.caiu-admin .stuffbox,
+body.caiu-admin .plugin-card,
+body.caiu-admin .theme-browser .theme,
+body.caiu-admin .metabox-holder .postbox-container .meta-box-sortables .postbox {
+  border-radius: var(--caiu-radius-md);
+  border: 1px solid var(--caiu-border);
+  background: var(--caiu-bg-elevated);
+  box-shadow: var(--caiu-shadow);
+}
+
+body.caiu-admin .postbox .hndle,
+body.caiu-admin .postbox .handlediv.button-link,
+body.caiu-admin .postbox-header,
+body.caiu-admin .plugin-card-top,
+body.caiu-admin .plugin-card-bottom {
+  background: transparent;
+  border-color: var(--caiu-border);
+}
+
+body.caiu-admin .widefat,
+body.caiu-admin .wp-list-table,
+body.caiu-admin table.form-table,
+body.caiu-admin .form-table td,
+body.caiu-admin .form-table th {
+  border-color: var(--caiu-border);
+  color: var(--caiu-text);
+}
+
+body.caiu-admin .widefat,
+body.caiu-admin .wp-list-table {
+  background: var(--caiu-bg-elevated);
+  border-radius: var(--caiu-radius-md);
+  overflow: hidden;
+}
+
+body.caiu-admin .widefat thead,
+body.caiu-admin .widefat tfoot,
+body.caiu-admin .wp-list-table thead,
+body.caiu-admin .wp-list-table tfoot,
+body.caiu-admin .wp-list-table th {
+  background: var(--caiu-bg-soft);
+  color: var(--caiu-text);
+}
+
+body.caiu-admin input[type="text"],
+body.caiu-admin input[type="email"],
+body.caiu-admin input[type="url"],
+body.caiu-admin input[type="password"],
+body.caiu-admin input[type="number"],
+body.caiu-admin input[type="search"],
+body.caiu-admin input[type="tel"],
+body.caiu-admin textarea,
+body.caiu-admin select {
+  background: var(--caiu-bg-soft);
+  color: var(--caiu-text);
+  border: 1px solid var(--caiu-border);
+  border-radius: var(--caiu-radius-sm);
+  min-height: 38px;
+  transition: border-color var(--caiu-transition), box-shadow var(--caiu-transition), background var(--caiu-transition);
+}
+
+body.caiu-admin textarea {
+  min-height: 120px;
+}
+
+body.caiu-admin input:focus,
+body.caiu-admin textarea:focus,
+body.caiu-admin select:focus,
+body.caiu-admin .CodeMirror-focused {
+  border-color: var(--caiu-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--caiu-accent) 22%, transparent);
+  outline: none;
+}
+
+body.caiu-admin .button,
+body.caiu-admin .button-secondary {
+  border-radius: 999px;
+  border: 1px solid var(--caiu-border);
+  background: var(--caiu-bg-soft);
+  color: var(--caiu-text);
+}
+
+body.caiu-admin .button:hover,
+body.caiu-admin .button-secondary:hover {
+  background: color-mix(in srgb, var(--caiu-bg-soft) 70%, var(--caiu-accent) 30%);
+  border-color: color-mix(in srgb, var(--caiu-border) 50%, var(--caiu-accent) 50%);
+  color: var(--caiu-text);
+}
+
+body.caiu-admin .button-primary {
+  border-radius: 999px;
+  border: 1px solid var(--caiu-accent);
+  background: var(--caiu-accent);
+  color: #fff;
+  text-shadow: none;
+}
+
+body.caiu-admin .button-primary:hover,
+body.caiu-admin .button-primary:focus {
+  background: var(--caiu-accent-strong);
+  border-color: var(--caiu-accent-strong);
+  color: #fff;
+}
+
+body.caiu-admin a {
+  color: var(--caiu-accent);
+}
+
+body.caiu-admin #screen-meta,
+body.caiu-admin #screen-meta-links .show-settings {
+  border-color: var(--caiu-border);
+  background: var(--caiu-bg-elevated);
+  color: var(--caiu-text);
+}
+
+body.caiu-admin .subsubsub a,
+body.caiu-admin .view-switch a,
+body.caiu-admin .filter-items,
+body.caiu-admin .tablenav,
+body.caiu-admin .tablenav-pages,
+body.caiu-admin .search-box label,
+body.caiu-admin .description,
+body.caiu-admin p.description,
+body.caiu-admin .howto,
+body.caiu-admin .dashicons,
+body.caiu-admin .wp-core-ui .notice p {
+  color: var(--caiu-text-muted);
+}
+
+body.caiu-admin .subsubsub a.current,
+body.caiu-admin .subsubsub a:focus,
+body.caiu-admin .subsubsub a:hover {
+  color: var(--caiu-text);
+}
+
+body.caiu-admin .wp-filter,
+body.caiu-admin .media-frame,
+body.caiu-admin .media-modal-content,
+body.caiu-admin .components-modal__frame {
+  border-radius: var(--caiu-radius-md);
+  background: var(--caiu-bg-elevated);
+  border-color: var(--caiu-border);
+}
+
+body.caiu-admin .components-button,
+body.caiu-admin .components-toolbar-button,
+body.caiu-admin .components-dropdown-menu__toggle,
+body.caiu-admin .edit-post-header-toolbar .components-button {
+  border-radius: 10px;
+}
+
+/* Add New Post (classic) note editor feel */
+body.caiu-admin.caiu-note-editor #wpbody-content {
+  background: radial-gradient(circle at top right, color-mix(in srgb, var(--caiu-accent) 12%, transparent), transparent 42%), var(--caiu-bg);
+}
+
+body.caiu-admin.caiu-note-editor #poststuff {
+  max-width: 1080px;
+  margin: 24px auto;
+}
+
+body.caiu-admin.caiu-note-editor #post-body.columns-2 {
+  margin-right: 0;
+}
+
+body.caiu-admin.caiu-note-editor #postbox-container-1 {
+  width: 300px;
+}
+
+body.caiu-admin.caiu-note-editor #post-body-content,
+body.caiu-admin.caiu-note-editor #postbox-container-1 .postbox {
+  border-radius: var(--caiu-radius-lg);
+  border: 1px solid var(--caiu-border);
+  background: var(--caiu-bg-elevated);
+  box-shadow: var(--caiu-shadow);
+}
+
+body.caiu-admin.caiu-note-editor #titlediv,
+body.caiu-admin.caiu-note-editor #postdivrich {
+  border: none;
+  background: transparent;
+}
+
+body.caiu-admin.caiu-note-editor #titlediv #title {
+  min-height: 72px;
+  font-size: 30px;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px dashed var(--caiu-border);
+  background: transparent;
+  font-weight: 650;
+  padding: 18px 6px 12px;
+}
+
+body.caiu-admin.caiu-note-editor #wp-content-editor-tools {
+  background: transparent;
+  border: none;
+}
+
+body.caiu-admin.caiu-note-editor #postdivrich {
+  padding: 12px 24px 20px;
+}
+
+body.caiu-admin.caiu-note-editor #post-status-info {
+  border-top: 1px solid var(--caiu-border);
+  background: var(--caiu-bg-soft);
+  color: var(--caiu-text-muted);
+}
+
+body.caiu-admin.caiu-note-editor .editor-post-title__input,
+body.caiu-admin.caiu-note-editor .block-editor-writing-flow {
+  color: var(--caiu-text);
+}
+
+body.caiu-admin .notice.notice-success {
+  border-left-color: var(--caiu-success);
+}
+
+body.caiu-admin .notice.notice-error {
+  border-left-color: var(--caiu-danger);
+}
+
+@media (max-width: 1200px) {
+  body.caiu-admin.caiu-note-editor #postbox-container-1 {
+    width: 100%;
+  }
+
+  body.caiu-admin.caiu-note-editor #post-body.columns-2 #postbox-container-1 {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 782px) {
+  body.caiu-admin #wpadminbar {
+    border-bottom: none;
+  }
+
+  body.caiu-admin.caiu-note-editor #poststuff {
+    margin: 10px auto 20px;
+  }
+
+  body.caiu-admin.caiu-note-editor #titlediv #title {
+    font-size: 24px;
+  }
+}
