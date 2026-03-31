@@ -104,8 +104,141 @@
     saveLocalTheme(preferred);
   }
 
+  function initPostMetaTabs() {
+    var body = document.body;
+    var isPostScreen = body.classList.contains("post-new-php") || body.classList.contains("post-php");
+
+    if (!isPostScreen || body.classList.contains("block-editor-page")) {
+      return;
+    }
+
+    var postBodyContent = document.querySelector("#post-body-content");
+    if (!postBodyContent || postBodyContent.querySelector(".caiu-metabox-tabs")) {
+      return;
+    }
+
+    var sortableContainers = ["#normal-sortables", "#advanced-sortables"]
+      .map(function (selector) {
+        return document.querySelector(selector);
+      })
+      .filter(Boolean);
+
+    var boxes = [];
+    sortableContainers.forEach(function (container) {
+      Array.prototype.slice.call(container.children).forEach(function (child) {
+        if (child.classList.contains("postbox")) {
+          boxes.push(child);
+        }
+      });
+    });
+
+    if (boxes.length < 2) {
+      return;
+    }
+
+    var tabShell = document.createElement("section");
+    tabShell.className = "caiu-metabox-tabs";
+
+    var tabList = document.createElement("div");
+    tabList.className = "caiu-metabox-tablist";
+    tabList.setAttribute("role", "tablist");
+    tabList.setAttribute("aria-label", "Post settings");
+
+    var panels = document.createElement("div");
+    panels.className = "caiu-metabox-panels";
+
+    boxes.forEach(function (box, index) {
+      var boxId = box.id || "caiu-metabox-" + (index + 1);
+      box.id = boxId;
+
+      var titleEl = box.querySelector(".hndle, .postbox-header h2, .postbox-header h3");
+      var titleText = titleEl ? titleEl.textContent.trim() : "Panel " + (index + 1);
+
+      var tabButton = document.createElement("button");
+      tabButton.type = "button";
+      tabButton.className = "caiu-metabox-tab";
+      tabButton.id = boxId + "-tab";
+      tabButton.setAttribute("role", "tab");
+      tabButton.setAttribute("aria-controls", boxId + "-panel");
+      tabButton.setAttribute("aria-selected", index === 0 ? "true" : "false");
+      tabButton.tabIndex = index === 0 ? 0 : -1;
+      tabButton.textContent = titleText;
+
+      var panel = document.createElement("section");
+      panel.className = "caiu-metabox-panel";
+      panel.id = boxId + "-panel";
+      panel.setAttribute("role", "tabpanel");
+      panel.setAttribute("aria-labelledby", tabButton.id);
+      panel.hidden = index !== 0;
+      panel.appendChild(box);
+
+      tabButton.addEventListener("click", function () {
+        var buttons = tabList.querySelectorAll(".caiu-metabox-tab");
+        var tabPanels = panels.querySelectorAll(".caiu-metabox-panel");
+
+        buttons.forEach(function (btn) {
+          btn.setAttribute("aria-selected", "false");
+          btn.tabIndex = -1;
+          btn.classList.remove("is-active");
+        });
+
+        tabPanels.forEach(function (tabPanel) {
+          tabPanel.hidden = true;
+        });
+
+        tabButton.setAttribute("aria-selected", "true");
+        tabButton.tabIndex = 0;
+        tabButton.classList.add("is-active");
+        panel.hidden = false;
+      });
+
+      tabButton.addEventListener("keydown", function (event) {
+        if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") {
+          return;
+        }
+
+        event.preventDefault();
+        var allTabs = Array.prototype.slice.call(tabList.querySelectorAll(".caiu-metabox-tab"));
+        var currentIndex = allTabs.indexOf(tabButton);
+        var nextIndex = event.key === "ArrowRight" ? currentIndex + 1 : currentIndex - 1;
+
+        if (nextIndex < 0) {
+          nextIndex = allTabs.length - 1;
+        }
+        if (nextIndex >= allTabs.length) {
+          nextIndex = 0;
+        }
+
+        allTabs[nextIndex].focus();
+        allTabs[nextIndex].click();
+      });
+
+      if (index === 0) {
+        tabButton.classList.add("is-active");
+      }
+
+      tabList.appendChild(tabButton);
+      panels.appendChild(panel);
+    });
+
+    sortableContainers.forEach(function (container) {
+      container.style.display = "none";
+    });
+
+    tabShell.appendChild(tabList);
+    tabShell.appendChild(panels);
+
+    var titleDiv = document.querySelector("#titlediv");
+    if (titleDiv && titleDiv.parentNode) {
+      titleDiv.parentNode.insertBefore(tabShell, titleDiv.nextSibling);
+    } else {
+      postBodyContent.insertBefore(tabShell, postBodyContent.firstChild);
+    }
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     initTheme();
     initSwitcher();
+    initPostMetaTabs();
   });
 })();

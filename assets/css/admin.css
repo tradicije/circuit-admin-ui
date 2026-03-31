@@ -39,6 +39,17 @@ body.caiu-admin #wpcontent,
 body.caiu-admin #wpwrap {
   background: var(--caiu-bg);
   color: var(--caiu-text);
+  accent-color: var(--caiu-accent);
+}
+
+body.caiu-admin #wpfooter,
+body.caiu-admin #wpfooter a,
+body.caiu-admin .wrap,
+body.caiu-admin .wrap p,
+body.caiu-admin .wrap span,
+body.caiu-admin .wrap li,
+body.caiu-admin label {
+  color: var(--caiu-text);
 }
 
 body.caiu-admin #wpadminbar {
@@ -132,6 +143,7 @@ body.caiu-admin .wrap h6 {
 body.caiu-admin .notice,
 body.caiu-admin div.updated,
 body.caiu-admin div.error,
+body.caiu-admin .update-nag,
 body.caiu-admin .card,
 body.caiu-admin .postbox,
 body.caiu-admin .stuffbox,
@@ -151,6 +163,7 @@ body.caiu-admin .plugin-card-top,
 body.caiu-admin .plugin-card-bottom {
   background: transparent;
   border-color: var(--caiu-border);
+  color: var(--caiu-text);
 }
 
 body.caiu-admin .widefat,
@@ -176,6 +189,14 @@ body.caiu-admin .wp-list-table tfoot,
 body.caiu-admin .wp-list-table th {
   background: var(--caiu-bg-soft);
   color: var(--caiu-text);
+}
+
+body.caiu-admin .striped > tbody > :nth-child(odd),
+body.caiu-admin ul.striped > :nth-child(odd),
+body.caiu-admin .alternate,
+body.caiu-admin .plugins .active td,
+body.caiu-admin .plugins .inactive td {
+  background: color-mix(in srgb, var(--caiu-bg-elevated) 80%, var(--caiu-bg-soft) 20%);
 }
 
 body.caiu-admin input[type="text"],
@@ -251,6 +272,7 @@ body.caiu-admin #screen-meta-links .show-settings {
 
 body.caiu-admin .subsubsub a,
 body.caiu-admin .view-switch a,
+body.caiu-admin .nav-tab-wrapper .nav-tab,
 body.caiu-admin .filter-items,
 body.caiu-admin .tablenav,
 body.caiu-admin .tablenav-pages,
@@ -265,17 +287,37 @@ body.caiu-admin .wp-core-ui .notice p {
 
 body.caiu-admin .subsubsub a.current,
 body.caiu-admin .subsubsub a:focus,
-body.caiu-admin .subsubsub a:hover {
+body.caiu-admin .subsubsub a:hover,
+body.caiu-admin .nav-tab-wrapper .nav-tab-active {
   color: var(--caiu-text);
+}
+
+body.caiu-admin .nav-tab-wrapper,
+body.caiu-admin .nav-tab {
+  border-color: var(--caiu-border);
+}
+
+body.caiu-admin .nav-tab {
+  background: var(--caiu-bg-soft);
+}
+
+body.caiu-admin .nav-tab:hover,
+body.caiu-admin .nav-tab:focus,
+body.caiu-admin .nav-tab-active {
+  background: var(--caiu-bg-elevated);
 }
 
 body.caiu-admin .wp-filter,
 body.caiu-admin .media-frame,
 body.caiu-admin .media-modal-content,
-body.caiu-admin .components-modal__frame {
+body.caiu-admin .components-modal__frame,
+body.caiu-admin .components-popover__content,
+body.caiu-admin .components-menu-group,
+body.caiu-admin .components-dropdown-menu__menu {
   border-radius: var(--caiu-radius-md);
   background: var(--caiu-bg-elevated);
   border-color: var(--caiu-border);
+  color: var(--caiu-text);
 }
 
 body.caiu-admin .components-button,
@@ -283,6 +325,11 @@ body.caiu-admin .components-toolbar-button,
 body.caiu-admin .components-dropdown-menu__toggle,
 body.caiu-admin .edit-post-header-toolbar .components-button {
   border-radius: 10px;
+}
+
+body.caiu-admin .components-popover__content *,
+body.caiu-admin .components-menu-group * {
+  color: var(--caiu-text);
 }
 
 /* Add New Post (classic) note editor feel */
@@ -346,6 +393,59 @@ body.caiu-admin.caiu-note-editor #post-status-info {
 body.caiu-admin.caiu-note-editor .editor-post-title__input,
 body.caiu-admin.caiu-note-editor .block-editor-writing-flow {
   color: var(--caiu-text);
+}
+
+body.caiu-admin.caiu-note-editor .caiu-metabox-tabs {
+  margin-top: 18px;
+  margin-bottom: 18px;
+  border: 1px solid var(--caiu-border);
+  background: var(--caiu-bg-elevated);
+  border-radius: var(--caiu-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--caiu-shadow);
+}
+
+body.caiu-admin.caiu-note-editor .caiu-metabox-tablist {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 12px;
+  background: var(--caiu-bg-soft);
+  border-bottom: 1px solid var(--caiu-border);
+}
+
+body.caiu-admin.caiu-note-editor .caiu-metabox-tab {
+  border: 1px solid var(--caiu-border);
+  background: var(--caiu-bg-elevated);
+  color: var(--caiu-text-muted);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--caiu-transition);
+  white-space: nowrap;
+}
+
+body.caiu-admin.caiu-note-editor .caiu-metabox-tab:hover,
+body.caiu-admin.caiu-note-editor .caiu-metabox-tab:focus {
+  color: var(--caiu-text);
+  border-color: color-mix(in srgb, var(--caiu-accent) 50%, var(--caiu-border) 50%);
+  outline: none;
+}
+
+body.caiu-admin.caiu-note-editor .caiu-metabox-tab.is-active {
+  color: #fff;
+  border-color: var(--caiu-accent);
+  background: var(--caiu-accent);
+}
+
+body.caiu-admin.caiu-note-editor .caiu-metabox-panels {
+  padding: 16px;
+}
+
+body.caiu-admin.caiu-note-editor .caiu-metabox-panel .postbox {
+  margin: 0;
+  box-shadow: none;
 }
 
 body.caiu-admin .notice.notice-success {

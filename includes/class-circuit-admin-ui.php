@@ -82,7 +82,7 @@ class Circuit_Admin_UI {
 		$classes .= ' caiu-theme-' . sanitize_html_class( $theme );
 		$classes .= ' caiu-admin';
 
-		if ( 'post-new.php' === $GLOBALS['pagenow'] ) {
+		if ( in_array( $GLOBALS['pagenow'], array( 'post-new.php', 'post.php' ), true ) ) {
 			$classes .= ' caiu-note-editor';
 		}
 
